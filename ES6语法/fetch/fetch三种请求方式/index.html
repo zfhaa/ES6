@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //new http:fetch
+        //一个基于promis的请求方法，更简单，更便捷
+
+
+
+    // let promise = new Promise((resolve,reject)=>{
+    //     setTimeout(()=>{
+    //         resolve();
+    //     },3000)
+    //     // resolve();
+    //     // reject();
+    //     });
+    //      promise 
+    //      .then(()=>console.log("OK了"))
+    //      .then(()=>console.log("可以无限调用"))
+    //      .catch(()=>console.log("出现问题了"))
+
+
+
+
+    //http://jsonplaceholder.typicode.com/posts
+
+    let url = "http://jsonplaceholder.typicode.com/posts";
+
+    fetch(url)
+    // .then(response => response.json())
+    .then((response)=>{
+      return  response.json()
+    })
+    .then((data)=>{
+        console.log(data);
+    })
+    .catch((err)=>{
+        console.log("error"+err);  //地址错误失败时发生
+    })
+  
+    
+
+    </script>
+</body>
+</html>

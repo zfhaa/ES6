@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+       // 1.假定有一个对象数组（A），获取数组中指定类型的对象放到B数组中
+        var products = [
+            {name:"cucumber",type:"vegetable"},
+            {name:"banana",type:"fruit"},
+            {name:"celery",type:"vegetable"},
+            {name:"orange",type:"fruit"}
+        ];
+        var filteredProducts = [];
+         //ES5
+         for(var i=0;i<products.length;i++){
+             if(products[i].type==="fruit"){
+                 filteredProducts.push(products[i])
+             }
+         }
+         console.log(filteredProducts);
+
+
+        //ES6
+        var filters = products.filter(function(product){
+            return product.type==="vegetable";
+        })
+        console.log(filters);
+
+
+        //2.假定有一个对象数组（A），过滤掉不满足条件的对象 （条件：蔬菜 数量：大于0 价格小于10）
+        var products = [{
+                name: "cucumber",
+                type: "vegetable",
+                quantity: 0,
+                price: 50
+            },
+            {
+                name: "banana",
+                type: "fruit",
+                quantity: 10,
+                price: 5
+            },
+            {
+                name: "celery",
+                type: "vegetable",
+                quantity: 10,
+                price: 5
+            },
+            {
+                name: "orange",
+                type: "fruit",
+                quantity: 10,
+                price: 5
+            }
+        ];
+
+
+        var filters = products.filter(function (product) {
+            return product.type === "vegetable" && product.quantity >= 0 && product.price < 10;
+        })
+        console.log(filters);
+
+
+        //3.假定有两个数组（A,B），根据A中的id值，过滤掉B数组中不符合的数据
+
+        var post = {
+            id: 4,
+            title: "javascript"
+        };
+        var comments = [{
+                postId: 4,
+                content: "Angular4"
+            },
+            {
+                postId: 5,
+                content: "Vue"
+            },
+            {
+                postId: 4,
+                content: "React"
+            },
+            {
+                postId: 1,
+                content: "node"
+            }
+        ];
+
+        function comment(post, comments) {
+            return comments.filter(function (com) {
+                return com.postId === post.id
+            })
+        }
+        console.log(comment(post,comments));
+    </script>
+</body>
+
+</html>

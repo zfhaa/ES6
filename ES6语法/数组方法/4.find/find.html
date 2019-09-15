@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //find只能找到第一个符合条件的数据
+        //假定有两个数组（A,B），快速找到符合条件的数据
+      var post = {
+            id: 4,
+            title: "javascript"
+        };
+        var comments = [{
+                postId: 4,
+                content: "Angular4"
+            },
+            {
+                postId: 5,
+                content: "Vue"
+            },
+            {
+                postId: 4,
+                content: "React"
+            },
+            {
+                postId: 1,
+                content: "node"
+            }
+        ];
+
+        function comment(post, comments) {
+            return comments.find(function (com) {
+                return com.postId === post.id
+            })
+        }
+        console.log(comment(post,comments));
+    </script>
+</body>
+</html>

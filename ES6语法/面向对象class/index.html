@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //Class 万事皆对象
+    // function Car(options){
+    //     this.title = options.title;
+    // }
+    // Car.prototype.drive = function(){
+    //     return "Vroom"
+    // }
+    // const car =new Car({title:"BWM"});
+    // console.log(car);
+    // console.log(car.drive());
+
+
+    // //继承 ES5方法
+    // function Toyota(options){
+    //     Car.call(this,options);
+    //     this.color = options.color;
+    // }
+
+    // //如果想得到Car里drive这个方法
+    // Toyota.prototype = Object.create(Car.prototype);
+    // Toyota.prototype.constructor = Toyota;
+
+    // const toyota = new Toyota({title:"Focus",color:"red"});  //因为Toyota里面没有title这个属性，所以去继承Car里的属性
+    // console.log(toyota)
+    // console.log(toyota.drive())
+
+
+
+    //ES6
+  class Car{
+      constructor({title}){
+          this.title = title;
+      }
+      drive(){
+          return "Vroom"
+      }
+  }
+  const car = new Car({title:"Bwm"});
+  console.log(car);
+  console.log(car.drive());
+
+  
+
+  class Toyota extends Car{ //让Toyota 继承于Car
+      constructor(options){
+          super(options);
+  this.color = options.color;
+      }
+  }
+  const toyota = new Toyota({color:"red",title:"Focus"})
+  console.log(toyota)
+  console.log(toyota.drive())
+
+
+
+ 
+    </script>
+</body>
+</html>

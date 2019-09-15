@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+      //some:一真即真
+      //every:一假即假
+  //ram>16为true，ram<16为false'
+  var computers =[
+      {name:"Apple",ram:8},
+      {name:"IBM",ram:4},
+      {name:"Acer",ram:32}
+  ];
+
+var everyIndex = computers.every(function(computer){
+    return computer.ram>16;
+})
+console.log(everyIndex);
+
+var someIndex = computers.some(function(computer){
+    return computer.ram>16;
+})
+console.log(someIndex);
+
+//用户注册页面，不能有空值
+function Field(value){
+    this.value = value;
+}
+Field.prototype.validate = function(){
+    return this.value.length > 0;
+}
+var username = new Field("asdf");
+var telephone = new Field("188888888");
+var password = new Field("my_password");
+
+var fields = {username,telephone,password};
+var formIsValid = fields.every(function(field){
+    return field.validate();
+});
+console.log(formIsValid);
+  </script>
+</body>
+</html>

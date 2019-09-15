@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //构造函数：Promise
+    
+    //Promise的三种状态 unresolved(等待任务完成) resolved(任务完成并且没有任何问题) rejected(任务完成，但是出现问题)
+    let promise = new Promise((resolve,reject)=>{
+      
+        resolve();
+        // reject();
+        });
+         promise 
+         .then(()=>console.log("OK了"))
+         .then(()=>console.log("可以无限调用"))
+         .catch(()=>console.log("出现问题了"))
+
+    </script>
+</body>
+</html>

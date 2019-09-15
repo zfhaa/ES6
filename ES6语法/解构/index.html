@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //例子一
+        //ES5
+        var saveFiled = {
+            extension: "jpg",
+            name: "girl",
+            size: 14000
+        };
+
+        function fileSammary(file) {
+            return `${file.name}.${file.extension}的大小为${file.size}`;
+        }
+        console.log(fileSammary(saveFiled));
+
+        //ES6
+        var saveFiled = {
+            extension: "jpg",
+            name: "girl",
+            size: 14000
+        };
+
+        function fileSammary(name, extension, size) {
+            return `${name}.${extension}的大小为${size}`;
+        }
+        console.log(fileSammary(saveFiled));
+
+        //例子二
+        const names = ["Henry", "Bucky", "Emily"];
+
+        const [name, ...rest] = names;
+        console.log(rest);
+
+        //例子三
+        //对象数组
+        const people = [{
+                name: "Henry",
+                age: 20
+            },
+            {
+                name: "Bucky",
+                age: 25
+            }, {
+                name: "Emily",
+                age: 30
+            }
+        ];
+        //ES5
+        // var age = people[0].age;
+        // console.log(age);
+        //ES6
+        const [{age}] = people;
+
+        console.log(age);
+
+
+        //例子四
+        const points = [
+            [4,5],
+            [10,1],
+            [0,40]
+        ];
+        //期望变成的样子
+        // const points = [
+        //   {x:4,x:5},
+        //   {x:10,x:1},
+        //   {x:0,x:40}
+        // ];
+
+        let newPoints =points.map(point=>{
+            const [x,y] = point;
+            return {x,y}
+        })
+        console.log(newPoints)
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+    #imageDisplay{
+        width: 161px;
+        height: 100px;
+        margin: 0 auto;
+
+    }
+#imageDisplay img{
+      width: 161px;
+      height: 100px;
+}
+</style>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center">
+                <h1 class="mb-3">相亲网</h1>
+                <div id="imageDisplay"></div>
+                <br>
+                <div id="profileDispaly"></div>
+                <br>
+                <button id="next" class="btn btn-dark btn-block">下一个</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+
+
+    <script>
+        const data = [{
+            name: "左先生",
+            age: 23,
+            gender: "男",
+            lookingfor: "女",
+            location: "北京",
+            image: "./image/1.jpg"
+        }, {
+            name: "杨幂",
+            age: 23,
+            gender: "男",
+            lookingfor: "女",
+            location: "北京",
+            image: "./image/2.jpg"
+        }, {
+            name: "杨小幂",
+            age: 23,
+            gender: "男",
+            lookingfor: "女",
+            location: "北京",
+            image: "./image/3.jpg"
+        }];
+
+
+        //迭代器方法
+        // function profileIterator(profiles) {
+        //     let nextIndex = 0;
+        //     return {
+        //         next: function () {
+        //             return nextIndex < profiles.length ? {
+        //                 value: profiles[nextIndex++],
+        //                 done: false
+        //             } : {
+        //                 value: undefined,
+        //                 done: true
+        //             }
+        //         }
+        //     }
+        // }
+        function* profileIterator(){
+            yield data[0];
+            yield data[1];
+            yield data[2];
+        }
+        const profiles = profileIterator(data);
+        // console.log(profiles.next());
+
+//手动调用
+nextProfile(); 
+        document.getElementById("next").addEventListener("click", nextProfile);
+
+        function nextProfile() {
+            const currentProfile = profiles.next().value;
+            if (currentProfile !== undefined) {
+                document.getElementById("profileDispaly").innerHTML = `
+   <ul class="list-group">
+   <li class="list-group-item">姓名:${currentProfile.name}
+   </li>
+   <li class="list-group-item">年龄:${currentProfile.age}
+   </li>
+   <li class="list-group-item">位置:${currentProfile.location}
+   </li>
+   <li class="list-group-item">诉求:${currentProfile.gender}寻找的目标对象是${currentProfile.lookingfor}性朋友
+   </li>
+    </ul>
+   `
+                document.getElementById("imageDisplay").innerHTML = `
+               
+                <img src=" ${currentProfile.image}"/>              
+`;
+            } else {
+                window.location.reload();
+
+            }
+
+
+        }
+
+        // console.log(currentProfile);
+    </script>
+</body>
+
+</html>

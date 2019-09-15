@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //1.求数组之和
+    var numbers= [10,20,30];
+    var sumValue = numbers.reduce(function(sum,number){
+        return sum + number;
+    },0) //sum初始值为0
+    console.log(sumValue);
+
+    //2.将数组中对象的某个属性抽离到另外一个数组中
+
+    var primaryColors = [{color:"red"},{color:"blue"},{color:"yellow"}];
+
+    var colors = primaryColors.reduce(function(previous,primaryColors){
+        previous.push(primaryColors.color);
+        return previous;
+    },[]);
+    console.log(colors);
+
+    //判断字符串中括号是否对称
+       function balanceParent(string){
+           return !string.split("").reduce(function(previous,char){
+           if(previous<0){return previous};
+           if(char=="("){return ++previous};
+           if(char==")"){return --previous};  
+           return previous;       
+           },0);
+       }
+       console.log(balanceParent("(((())"));
+    </script>
+</body>
+</html>

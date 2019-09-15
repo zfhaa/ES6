@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //spread operator展开运算符
+    //更快，更便捷的操作数组
+//例子一
+    function addNumbers(a,b,c,d,e,f){
+        var numbers = [a,b,c,d,e];
+        return numbers.reduce((sum,number)=>{
+            return sum +number ;
+        },0);
+    }
+    console.log(addNumbers(1,2,3,4,5));
+
+
+    function addNumbers(...numbers){
+        return numbers.reduce((sum,number)=>{
+            return sum +number ;
+        },0);
+    }
+    console.log(addNumbers(1,2,3,4,5));
+
+    //例子二
+    var defaultColors = ["red","greed"];
+    var favoriteColors = ["orange","yellow"];
+    var fallColors = ["fire red","fall orange"];
+    console.log([...defaultColors,...favoriteColors,...fallColors]);
+
+
+    function ablidateShop(...items){
+        if(items.indexOf("milk")<0){
+        return ["milk",...items];
+        }
+    }
+    console.log(ablidateShop("banana","apple","coffe"))
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var colors = ["red", "bule", "yellow"];
+
+
+        for (var i = 0; i < colors.length; i++) {
+            console.log(colors[i]);
+        }
+
+        //ES6
+        colors.forEach(function (color) {
+            console.log(color);
+        });
+        //遍历数组的值，并计算总和
+
+        var numbers = [1, 2, 3, 4, 5];
+        var sum = 0;
+        numbers.forEach(function (number) {
+            sum += number;
+        })
+
+
+        console.log(sum);
+    </script>
+</body>
+
+</html>

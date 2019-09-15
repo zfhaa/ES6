@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function User(id){
+         this.id=id;
+    }
+    function randomId(){
+        return Math.random()*1000000;
+
+    }
+
+    function createAdminUser(user = new User(randomId())){ //不传参数随机生成ID
+        user.admin = true;
+        return user;
+    }
+    const user = new User(2);
+    console.log(createAdminUser(user));
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 箭头函数解决的问题
+        // 1.缩减代码
+        // 2.改变this指向
+        const double1 = function (number) {
+            return number * 2;
+        }
+
+        const double2 = (number) => {
+            return number * 2;
+        }
+
+        const double3 = (number) => number * 2;
+
+        const double4 = number => number * 2;
+
+        const double5 = (number => number * 2);
+
+        const double6 = (number, number1) => number * number1; //两个形参写法
+
+        const double = (number, number1) => {
+            sum = number * number1
+            return sum;
+        };
+
+        console.log(double(2, 4));
+
+        //map 一个数组，让数组中的值以double形式展现
+        const numbers = [1, 2, 3];
+        var newNumbers = numbers.map(number => number * 2);
+        console.log(newNumbers)
+
+        //改变this指向
+        //ES5方法
+        const team1 = {
+            members: ["Henry", "Elyse"],
+            teamName: "es6",
+            teamSummary: function () {
+                let that = this;
+                return this.members.map(function (member) {
+                     //此时的this不知道指向谁
+                    return `${member}隶属于${that.teamName}小组`
+                })
+            }
+        }
+
+
+        const team2 = {
+            members: ["Henry", "Elyse"],
+            teamName: "es6",
+            teamSummary: function () {
+                return this.members.map(function (member) {
+                    //此时的this不知道指向谁
+                    return `${member}隶属于${this.teamName}小组`
+                }.bind(this))
+            }
+        }
+
+
+            //ES6方法
+        const team3 = {
+            members: ["Henry", "Elyse"],
+            teamName: "es6",
+            teamSummary: function () {
+                return this.members.map( (member) =>{
+                    //此时this指向的就是team对象
+                    return `${member}隶属于${this.teamName}小组`
+                })
+            }
+        }
+        console.log(team3.teamSummary())
+    </script>
+</body>
+
+</html>
